@@ -177,14 +177,20 @@ if($page == 'Add'){
         $query_run = mysql_query($query);
         $itemInfo = mysql_fetch_array($query_run);
     ?>
-    <div class ="the_item_info">
-        <div class = "container">
-            
-                <h1 class = 'text-center'><?php echo $itemInfo['item_name'] ?></h1>
+    <div class = "container">
+        <h1 class = 'text-center the-item-name'><?php echo $itemInfo['item_name'] ?></h1>
+        <div class ="the_item_info">
                 <img src='uploded_image/<?php echo $itemInfo['item_image']?>' class="img-responsive img-thumbnail" />
-                <p><?php echo $itemInfo['item_name'] ?></p>
-                <span><?php echo $itemInfo['item_price'] ?></span>
-                <p><?php echo $itemInfo['item_name'] ?></p>
+                <div class = 'the-item'>
+                    <p><?php echo $itemInfo['item_description'] ?></p>
+                    <span>Price: <span class='price-number'><?php echo $itemInfo['price'] ?></span></span>
+                    <div class = 'comment'>
+                        <form>
+                            <label>Contuct Us: </label>
+                            <textarea class='form-control'></textarea>
+                        </form>
+                    </div>
+                </div>
         </div>
     </div>
 
