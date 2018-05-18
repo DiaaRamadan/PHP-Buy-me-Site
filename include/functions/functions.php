@@ -15,5 +15,28 @@ function select_from_DB($options, $table, $condition = null,$value = null, $cond
     return $result;    
 }
 
+// Function to redirect to previous page
+function redirect($massage, $url=null, $second=3) {
+
+    if($url==null) {
+        $url = 'index.php';
+        $link = 'Home Page'; 
+    }else {
+        if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+            $url = $_SERVER['HTTP_REFERER'];
+            $link='Privous Page';
+        }else {
+            $url = 'index.php';
+            $link = 'Home Page'; 
+        }
+    }
+    echo $massage;
+	echo "<div class='container alert alert-info'>You Will Redirect To " .$link." In $second Seconds</div>";
+	header("refresh:$second;url=$url");
+	exit();
+}
+
+
+
 ?>
 
