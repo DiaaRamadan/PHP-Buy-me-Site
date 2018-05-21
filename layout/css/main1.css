@@ -477,7 +477,7 @@ footer .footer-content .left .left-links div i {
 /* End Catagory page */
 /* Start Item page */
 .market-header {
-    margin-bottom: -30px;
+    margin-bottom: 60px;
     margin-top: 60px;
 }
 .add-item .add-header {
@@ -530,7 +530,7 @@ footer .footer-content .left .left-links div i {
     font-weight: normal;
 }
 .related-item .main-h1-cat {
-    margin-bottom: -100px;
+    margin-bottom: 50px;
     margin-top: 40px;
 }
 .related-item .cat-items-rlt img{
@@ -546,9 +546,41 @@ footer .footer-content .left .left-links div i {
 }
 .related-item .cat-items-rlt .every-item {
     max-height: 300px;
-    margin-top: 80px;
+    margin-bottom: 90px;
+    color: #8c8989;
 }
-
+.the_item_info {
+    display: flex;
+}
+.the-item-name {
+    margin-bottom: 60px;
+    margin-top: 40px;
+}
+.the_item_info .the-item {
+    margin-left: 50px;
+    font-size: 20px;
+    color: #888079;
+    font-family: -webkit-pictograph;
+}
+.the_item_info .the-item p {
+    margin-bottom: 25px;
+}
+.the_item_info .the-item span {
+ margin-bottom: 25px;
+}
+.the_item_info .the-item span .price-number {
+    font-weight: bold;
+    color: #cc2a37;
+}
+.the_item_info .the-item .comment {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.the_item_info .the-item textarea {
+    margin-top: 15px;
+    width: 375px;
+    margin-bottom: 15px;
+}
 /* End Items page */
 
 /*Start Responive*/
