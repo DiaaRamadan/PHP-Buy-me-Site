@@ -1,5 +1,6 @@
 <?php
 ob_start();
+$errorArray = array();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
       if(isset($_POST['login'])){
           $username = $_POST['username'];
@@ -33,7 +34,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
         $user_type = $_POST['user-type'];
         $hash_password = sha1($password);
-       if(!empty($username) && !empty($password) && !empty($fullname) && !empty($email) && !empty($user_type) ){
+
+      // uplode image
+      $imagename = $_FILES['image']['name'];
+      $imageSize = $_FILES['image']['size'];
+      $imageType = $_FILES['image']['type'];
+      $imageTemp = $_FILES['image']['tmp_name'];
+      $imageAllowExt = array('jpg','jpeg','png');
+      $iamgeUserExt = strtolower(end(explode('.', $imagename)));
+      $uploadeimage = rand(0,1000000).'_'.$imagename;
+      move_uploaded_file($imageTemp,"../Trining_project/uploded_image/".$uploadeimage);
+      
+      
+      if(!empty($imageAllowExt) && !in_array($iamgeUserExt,$imageAllowExt)){
+        $errorArray [] = "This type of images not allow";
+      }
+
+      if($imageSize > 4194304){
+            $errorArray [] = "The image should be less than or equal 4MB";
+      }
+      
+      if(empty($errorArray)){
+        if(!empty($username) && !empty($password) && !empty($fullname) && !empty($email) && !empty($user_type) ){
           $queryemail ="SELECT `username` FROM `users` WHERE `username` = '$username'";
           $query ="SELECT `username` FROM `users` WHERE `username` = '$username'";
           if($query_run = mysql_query($query)){
@@ -41,14 +63,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
               if($num_rows > 0){
                 header('location: erro.php');
               }else{
-                $query2="INSERT INTO `users` ( `username`, `password`, `email`, `name`,`phone`,`Date`) VALUES('$username','$hash_password','$email','$fullname','$phone',now())";
+                $query2="INSERT INTO `users` ( `username`, `password`, `email`, `name`,`phone`,`Date`,`image`) VALUES('$username','$hash_password','$email','$fullname','$phone',now(),'$uploadeimage')";
                 if($query_run = mysql_query($query2)){
                     header('location:con.php');
                 }
               } 
           }
        }
-       
+      }else {
+        foreach ($errorArray as $error) {
+          echo "<div class = 'insert-errors alert alert-danger container'>".$error."</div>";
+        }
+      }
    }
  }
  ob_end_flush();
