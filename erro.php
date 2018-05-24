@@ -12,6 +12,7 @@ include $templates."header.php";
 <div class = 'erro-massage'>
     <i class = 'erro fa fa-frown-o'></i>
     <span>The user or email is not valid...</span>
+    <?php redirect('The user or email is not valid...', 'back'); ?>
     <div>
         <a href = "index.php"><button class = 'btn btn-danger'>Go Home</button></a>
     </div>    

@@ -36,7 +36,24 @@ function redirect($massage, $url=null, $second=3) {
 	exit();
 }
 
+// function return the information form the database 
 
+function userInfo($field, $tabel, $where, $equal) {
+
+    $query = "SELECT $field FROM $tabel WHERE $where = '$equal'";
+   if( $query_run = mysql_query($query)) {
+    $userarray = array();
+    while($result=mysql_fetch_array($query_run))
+    {
+        $userarray[]=$result;
+    }
+     return $userarray;
+   }
+    
+    
+     
+
+}
 
 ?>
 

@@ -23,9 +23,9 @@ include 'init.php';
                 </form>
             </div>
             <?php
-            if($_SERVER['REQUEST_METHOD']=='GET'){
+            if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 if(isset($_GET['search'])){
-                    $search_name =$_GET['search'];
+                    $search_name = $_GET['search'];
                     if(!empty($search_name)){
                         $query = "SELECT * From `catagories` WHERE `cat_name` LIKE '%$search_name%'";
                         if($query_run = mysql_query($query)){
@@ -43,7 +43,6 @@ include 'init.php';
                             }
                         }
                     }
-
                 } 
             }
             ?>

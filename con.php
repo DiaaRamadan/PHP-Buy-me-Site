@@ -11,11 +11,9 @@ include $templates."header.php";
 
 <div class = 'con-massage'>
     <i class = 'con fa fa-smile-o'></i>
-    <span>congratulation...</span>
-    <div>
-        <a href = "index.php"><button class = 'btn btn-info'>Go Home</button></a>
-    </div>    
+    <span>congratulation...</span>    
 </div>
+<?php redirect('congratulation...', 'back') ?>
 <script src="<?php echo $js;?>jquery-3.2.1.min.js"></script>
 <script src="<?php echo $js;?>bootstrap.min.js"></script>
 <script src="<?php echo $js;?>jquery-ui.min.js"></script>

@@ -40,9 +40,10 @@ if($page == 'Manage'){
                                     <div>
                                      <span>Added Date: <?php echo $result['item_date'] ?></span>
                                  </div>
+                                 
                                  <div>
                                     <a href = 'item.php?page=itemInfo&item_id=<?php echo $result['item_id'] ?>'>Show details</a>
-                                  </div>
+                                </div>
                                 </div> 
                         </div>    
                     <?php } ?>
@@ -183,11 +184,15 @@ if($page == 'Add'){
                 <img src='uploded_image/<?php echo $itemInfo['item_image']?>' class="img-responsive img-thumbnail" />
                 <div class = 'the-item'>
                     <p><?php echo $itemInfo['item_description'] ?></p>
+                    <p>Made In: <?php echo $itemInfo['conutry'] ?></p>
+                    <p>Status: <?php echo $itemInfo['status'] ?></p>
+                     <p>Added date: <?php echo $itemInfo['item_date'] ?></p>
                     <span>Price: <span class='price-number'><?php echo $itemInfo['price'] ?></span></span>
                     <div class = 'comment'>
-                        <form>
+                        <form method = 'POST' action = 'comment.php?item_id=<?php echo $item_id ;?>'>
                             <label>Contuct Us: </label>
-                            <textarea class='form-control'></textarea>
+                            <textarea name = 'comment' class='form-control'></textarea>
+                            <input type = 'submit' class = 'btn btn-default' value = 'Comment' />
                         </form>
                     </div>
                 </div>
@@ -264,7 +269,6 @@ else if  ($page =='Insert') {
                                         <div class="every-item col col-md-3 col-sm-6">
                                             <img src='uploded_image/<?php echo $result['item_image']?>' class="img-responsive img-thumbnail" />
                                             <h3>Name: <?php echo $result['item_name'] ?></h3>
-                                            <p>Description: <?php echo $result['item_description'] ?></p>
                                             <div>
                                                 <span>Price: <?php echo $result['price'] ?></span>
                                             </div>
@@ -274,7 +278,11 @@ else if  ($page =='Insert') {
                                             <div>
                                                  <span>Added Date: <?php echo $result['item_date'] ?></span>
                                             </div>
-                                        </div>    
+                                            <div>
+                                                 <a href = 'item.php?page=itemInfo&item_id=<?php echo $result['item_id'] ?>'>Show details</a>
+                                            </div>
+                                        </div>  
+                                          
                                   <?php } ?>
                             </div>
                         </div>

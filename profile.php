@@ -26,7 +26,12 @@ if($page=='Manage') {
         </div>
     </div>
 </div>
-<?php }else if($page == 'Edit'){ ?>
+<?php }else if($page == 'Edit'){ 
+
+        $query = "SELECT * FROM `users` WHERE `id`='$userId'";
+        $query_run = mysql_query($query);
+        $result = mysql_fetch_array($query_run);
+    ?>
     <div class = 'profile-edit'>
         <div class = 'container'>
             <h1 class='text-center'>Profile Information</h1>
@@ -37,15 +42,7 @@ if($page=='Manage') {
                 <input class = "form-control col col-md-8" 
                     type = "text" 
                     name = "fullname" 
-                    placeholder = "<?php echo  $user =userInfo('name', 'users', 'id', $userId); ?>" 
-                    required>
-                </div>
-                <div class='pedit'>
-                <label class = "col col-md-3">Password</label>
-                <input class = "form-control col col-md-8" 
-                    type = "password" 
-                    name = "password" 
-                    placeholder = "New Password" 
+                    value = "<?php echo $result['name']; ?>" 
                     required>
                 </div>
                 <div class='pedit'>
@@ -53,7 +50,11 @@ if($page=='Manage') {
                 <input class = "form-control col col-md-8" 
                     type = "text" 
                     name = "phone" 
-                    placeholder = "Phone Optional">
+                    placeholder = "<?php if(!empty($result['phone'])){ 
+                        echo $result['name'];
+                        }else {
+                            echo 'You have no Phone number, Add phone number if you like (Option)';
+                        } ?>">
             </div>
             <div class='pedit form-group-lg'>
                 <label class = "col col-md-3">Image</label>
@@ -61,6 +62,21 @@ if($page=='Manage') {
                         name = "image" 
                         class = "form-control col col-md-8" />
             </div>
+            <div class='pedit'>
+                <label class = "col col-md-3">Old Password</label>
+                <input class = "form-control col col-md-8" 
+                    type = "password" 
+                    name = "old-password" 
+                    placeholder = "Old Password" 
+                    required>
+                </div>
+                <div class='pedit'>
+                <label class = "col col-md-3">Password</label>
+                <input class = "form-control col col-md-8" 
+                    type = "password" 
+                    name = "password" 
+                    placeholder = "New Password">
+                </div>
 
             <div>
             <input class = "profile-edit-btn btn btn-primary col-sm-offset-3" 

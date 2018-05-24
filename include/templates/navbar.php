@@ -66,7 +66,7 @@
       <!-- Start register form -->
       <div class = "register-arrow"></div>
       <div class = "register-form-nav">
-        <form class = "form-group" method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>" enctype =        multipart/form-data >
+        <form class = "form-group" method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>"                     enctype =multipart/form-data >
           <div>
             <label>UserName</label>
             <input class = "form-control" 

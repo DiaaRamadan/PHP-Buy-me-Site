@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                   $_SESSION['user_id'] = $result['id'];
                   header('location:index.php');
                 }else{
-                  echo "Invalid Username Or Password";
+                  echo "<div class='alert alert-danger container'> Invalid Username Or Password </div>";
                 } 
             }
          }else{
